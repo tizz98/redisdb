@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+
+tasks:
+  test:
+    silent: true
+    deps:
+      - install-deps
+    cmds:
+      - poetry run pytest
+
+  install-deps:
+    silent: true
+    run: once
+    sources:
+      - pyproject.toml
+      - poetry.lock
+    cmds:
+      - poetry install
